@@ -30,6 +30,8 @@ const dispatchSuccessUpdate = library =>
 
 const dispatchErrorUpdate = err => console.error(err)
 
+// TODO: Look into exporting single track files.
+// http://www.w3.org/TR/FileAPI/#requirements
 export const exportDb = () => Library.exportDb()
 
 export const update = () => {
