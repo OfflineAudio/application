@@ -4,6 +4,7 @@ import shallowEqual from 'react-pure-render/shallowEqual';
 class PureComponent extends React.Component {
 
   // shouldComponentUpdate(nextProps, nextState) {
+  //   // Attempted work-around for react-router
   //   // https://github.com/gaearon/react-pure-render#known-issues
   //   if (this.context.router) {
   //     const changed = this.pureComponentLastPath !== this.context.router.getCurrentPath();
