@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Offline Audio</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Offline Audio Search">
+    <link rel="stylesheet" href="/style.css">
+    <link href="/favicon.ico" rel="icon" type="image/x-icon">
+</head>
+<body>
+  <script>
+    navigator.serviceWorker.register('worker.js').then(function(reg) {
+      console.log('◕‿◕', reg)
+    }, function(err) {
+      console.log('ಠ_ಠ', err)
+    })
+  </script>
+  <script src="/dist/app.min.js" async></script>
+</body>
+</html>
