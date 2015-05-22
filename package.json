@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/app.js",
   "scripts": {
-    "test": "jest",
+    "test": "echo \"Error: No tests exit as of yet, look into using Jest by Facebook.\" && exit 1",
     "standard": "standard",
     "build": "gulp build && npm run build_worker && npm run build_serviceworker && npm run minify",
     "serve": "pushstate-server ./ 3000",
