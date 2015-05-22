@@ -1,6 +1,6 @@
 import AppDispatcher from '../dispatcher/AppDispatcher'
 import FileUploaderConstants from '../constants/FileUploaderConstants'
-import Library from '../utils/Library'
+import * as Library from '../utils/Library'
 
 export const uploadFiles = data =>
   Library.addSongs(data, function (err, data) {
