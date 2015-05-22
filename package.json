@@ -7,6 +7,7 @@
     "test": "echo \"Error: No tests exit as of yet, look into using Jest by Facebook.\" && exit 1",
     "standard": "standard",
     "build": "gulp build && npm run build_worker && npm run build_serviceworker && npm run minify",
+    "build-dist": "npm run build && npm run wipe_www && npm run copy_to_www",
     "serve": "pushstate-server ./ 3000",
     "build_worker": "babel ./js/utils/worker-es6.js --out-file ./js/utils/worker.js",
     "build_serviceworker": "babel ./worker-es6.js --out-file ./worker.js",
