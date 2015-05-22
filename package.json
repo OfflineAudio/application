@@ -15,7 +15,7 @@
     "deploy": "npm run wipe_www && npm run copy_to_www && surge www",
     "wipe_www": "rm -r www",
     "copy_to_www": "mkdir www && cp -R CNAME dist favicon.ico fonts images 200.html js opensearch.xml style.css worker.js serviceworker-cache-polyfill.js www ",
-    "yolo": "npm run build && npm run deploy"
+    "yolo": "npm run build-dist && npm run deploy"
   },
   "author": "",
   "license": "MIT",
