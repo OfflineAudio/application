@@ -1,6 +1,6 @@
 import AppDispatcher from '../dispatcher/AppDispatcher'
 import LibraryConstants from '../constants/LibraryConstants'
-import Library from '../utils/Library'
+import * as Library from '../utils/Library'
 
 export const createLibrary = docs =>
   docs.reduce(function (library, b) {

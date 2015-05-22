@@ -2,7 +2,8 @@
 import AppDispatcher from '../dispatcher/AppDispatcher'
 import PlayerConstants from '../constants/PlayerConstants'
 import LibraryConstants from '../constants/LibraryConstants'
-import Library from '../utils/Library'
+import * as Library from '../utils/Library'
+
 // TODO: Figure out which audio types the browser supports and restrict playback to those.
 const audio = new AudioContext()
 
