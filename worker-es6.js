@@ -66,7 +66,7 @@ self.addEventListener('fetch', event => {
           fetch('https://offline.audio/')
         : (event.request.url.match(/http:\/\/localhost\/.+/)) ?
           caches.match('/index.html')
-        : fetch(event.request.clone()).then(response => { // We clone the request stream as we want to consume it twice, by the brwoser and cache
+        : fetch(event.request.clone()).then(response => { // We clone the request stream as we want to consume it twice, by the browser and cache
             if (response.status < 400) {
               var responseClone = response.clone() // We clone the response stream for the same reason as the request stream
               caches.open(CURRENT_CACHES.get('read-through')).then(cache =>
