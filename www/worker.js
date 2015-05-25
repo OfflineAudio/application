@@ -2,6 +2,7 @@
 "use strict";
 
 importScripts("serviceworker-cache-polyfill.min.js");
+importScripts("array.from.js");
 
 var CACHE_VERSION = 1356730999;
 
@@ -22,7 +23,8 @@ self.addEventListener("install", function (event) {
       return console.log("All resources have been fetched and cached.");
     });
   })["catch"](function (error) {
-    return console.error("Pre-fetching failed:", error);
+    console.error("Pre-fetching failed:", error);
+    throw error;
   }));
 });
 
@@ -45,7 +47,7 @@ self.addEventListener("fetch", function (event) {
 
   event.respondWith(caches.match(event.request).then(function (response) {
     return response ? response : event.request.url.match(/https:\/\/offline.audio\//) ? fetch("https://offline.audio/") : event.request.url.match(/http:\/\/localhost\/.+/) ? caches.match("/index.html") : fetch(event.request.clone()).then(function (response) {
-      // We clone the request stream as we want to consume it twice, by the brwoser and cache
+      // We clone the request stream as we want to consume it twice, by the browser and cache
       if (response.status < 400) {
         var responseClone = response.clone(); // We clone the response stream for the same reason as the request stream
         caches.open(CURRENT_CACHES.get("read-through")).then(function (cache) {

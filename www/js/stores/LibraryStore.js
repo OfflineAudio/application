@@ -2,7 +2,11 @@ import AppDispatcher from '../dispatcher/AppDispatcher'
 import {EventEmitter} from 'events'
 import FileUploaderConstants from '../constants/FileUploaderConstants'
 import LibraryConstants from '../constants/LibraryConstants'
-import _ from 'lodash'
+import map from 'lodash/collection/map'
+import extend from 'lodash/object/assign'
+import flatten from 'lodash/array/flatten'
+import flattenDeep from 'lodash/array/flattenDeep'
+import filter from 'lodash/collection/filter'
 
 // Define initial data points
 let _library = {} // Artist -> Album -> Title
@@ -111,7 +115,7 @@ function isEmpty(obj){
     return (Object.getOwnPropertyNames(obj).length === 0);
 }
 
-var LibraryStore = _.extend({}, EventEmitter.prototype, {
+var LibraryStore = extend({}, EventEmitter.prototype, {
 
   getArtists () {
     return Object.keys(_library)
@@ -130,25 +134,25 @@ var LibraryStore = _.extend({}, EventEmitter.prototype, {
   },
 
   getTracks () {
-    return _.flattenDeep(_.map(this.getArtists(), artist => _.map(this.getAlbumsByArtist(artist, true), this.getTracksOfAlbums), this))
+    return flattenDeep(map(this.getArtists(), artist => map(this.getAlbumsByArtist(artist, true), this.getTracksOfAlbums), this))
   },
 
   getTracksOfAlbums (album) {
-    return _.map(album, function (doc, trackName) {
+    return map(album, function (doc, trackName) {
       return {[trackName]: doc}
     })
   },
 
   getTracksByArtist (artist) {
-    return _.flatten(_.map(this.getAlbumsByArtist(artist, true), this.getTracksOfAlbums))
+    return flatten(map(this.getAlbumsByArtist(artist, true), this.getTracksOfAlbums))
   },
 
   getAlbums () {
-    return _.flatten(this.getAllAlbumsSortedByArtist())
+    return flatten(this.getAllAlbumsSortedByArtist())
   },
 
   getAllAlbumsSortedByArtist () {
-    return _.map(this.getArtists(), this.getAlbumsByArtist)
+    return map(this.getArtists(), this.getAlbumsByArtist)
   },
 
   // Return cart cost total
@@ -169,7 +173,7 @@ var LibraryStore = _.extend({}, EventEmitter.prototype, {
   },
 
   getFavouriteTracks () {
-    return _.filter(this.getTracks(), track => track[Object.keys(track)[0]].favourite)
+    return filter(this.getTracks(), track => track[Object.keys(track)[0]].favourite)
   },
 
   getLibrary () {
