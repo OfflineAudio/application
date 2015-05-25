@@ -30,7 +30,10 @@ self.addEventListener('install', event => {
       cache.addAll(urlsToPrefetch.map(urlToPrefetch =>
         new Request(urlToPrefetch, {mode: 'no-cors'})
       )).then(() => console.log('All resources have been fetched and cached.'))
-    ).catch(error => console.error('Pre-fetching failed:', error))
+    ).catch(error => {
+      console.error('Pre-fetching failed:', error)
+      throw error
+    })
   )
 })
 
