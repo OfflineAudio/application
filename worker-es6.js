@@ -1,5 +1,6 @@
 /* global self, caches, importScripts, Request, fetch */
 importScripts('serviceworker-cache-polyfill.min.js')
+importScripts('array.from.js')
 
 const CACHE_VERSION = 1356730999
 
