@@ -1,6 +1,5 @@
 import React from 'react';
 import {DefaultRoute, Route} from 'react-router'
-import _ from 'lodash'
 
 import MusicPlayer from './components/MusicPlayer.react'
 import TrackList from './components/TrackList.react'
