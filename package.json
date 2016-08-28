@@ -9,6 +9,7 @@
     "build": "gulp build && npm run build_worker && npm run build_serviceworker && npm run minify",
     "build-dist": "npm run build && npm run wipe_www && npm run copy_to_www",
     "serve": "pushstate-server ./ 3000",
+    "start": "npm run serve",
     "build_worker": "babel ./js/utils/worker-es6.js --out-file ./js/utils/worker.js",
     "build_serviceworker": "babel ./worker-es6.js --out-file ./worker.js",
     "minify": "uglifyjs --screw-ie8 browser-polyfill.js ./dist/app.js > ./dist/app.min.js && uglifyjs --screw-ie8 ./js/utils/worker.js > ./js/utils/worker.min.js && uglifyjs --screw-ie8 array-from.js blob-util.js bluebird.js concat-stream.js id3js.js pouchdb-replication-stream.js pouchdb.js runtime.js > ./dist/worker-addons.min.js && uglifyjs --screw-ie8 serviceworker-cache-polyfill.js > serviceworker-cache-polyfill.min.js && uglifyjs --screw-ie8 worker.js > worker.min.js",
